@@ -1,5 +1,4 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
 const ChefCard = () => {
   const data = useLoaderData();
@@ -26,7 +25,7 @@ const ChefCard = () => {
              <div className="badge badge-outline">Specialty: {item.specialty}</div>
            </div>
          </div>
-         <div className="btn bg-orange-400 text-white hover:bg-orange-500"> view detail</div>
+         <div className="btn bg-orange-400 text-white hover:bg-orange-500"> <Link to={`/detail/${item.id}`} >view detail</Link> </div>
        </div>
         ))}
       </div>
