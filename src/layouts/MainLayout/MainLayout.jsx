@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import NavigationBar from '../../pages/shared/NavigationBar';
-import Carousel from '../../pages/Carousel/Carousel';
+// import Carousel from '../../pages/Carousel/Carousel';
 import RecipeCategory from '../../pages/RecipeCategory';
 
 
