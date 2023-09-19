@@ -6,11 +6,11 @@ const ChefCard = () => {
   return (
     <div className="px-52">
       {/* header */}
-      <div className="text-center">
+      <div className="text-center pb-24">
         <p className="text-orange-500">Know Our Chef</p>
         <h1 className="text-5xl font-bold">Master Chef</h1>
       </div>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-10 ">
         {data.map((item) => (
          <div key={item.id} className="card w-96 bg-base-100 shadow-xl border-2">
          <figure><img src={item.image_url} className="object-contain w-fu" /></figure>

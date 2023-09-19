@@ -7,7 +7,7 @@ const ChefDetail = () => {
   return (
     <div className="px-52 py-5">
       <h2 className="text-center font-bold text-4xl uppercase text-orange-400 py-10 ">
-        Chef's Review{" "}
+        Chefs Review{" "}
       </h2>
       <div className="card  lg:card-side bg-base-100 shadow-xl">
         <figure className="w-1/2">

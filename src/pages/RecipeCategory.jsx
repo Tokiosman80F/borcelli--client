@@ -12,7 +12,7 @@ const RecipeCategory = () => {
     { image: Food5, text: "Dessert", id: 5 },
   ];
   return (
-    <div className="text-center px-52 py-10">
+    <div className="text-center px-52 py-32">
        <h5 className="text-orange-500">Choose Your Category</h5>
        <h1 className="text-5xl font-bold">Recipe Categories</h1>
        <div className="flex justify-between items-center gap-10 mt-16">

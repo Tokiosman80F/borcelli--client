@@ -41,13 +41,15 @@ const NavigationBar = () => {
             <span className="hover:text-black">Submit Recipe</span>
           </button>
           <button className="flex items-center gap-2">
-            <FaHeart className="text-orange-500"></FaHeart>{" "}
+            <FaHeart className="text-orange-500"></FaHeart>
             <span className="hover:text-black">Saved Recipe</span>
           </button>
-          <button className="flex items-center gap-2">
-            <FaLock className="text-orange-500"></FaLock>{" "}
-            <span className="hover:text-black">Login</span>
-          </button>
+        
+            <Link to="/login" className="flex items-center gap-2">
+              <FaLock className="text-orange-500"></FaLock>
+              <span className="hover:text-black">Login</span>
+            </Link>
+          
         </div>
       </div>
       {/* brands */}
@@ -57,9 +59,11 @@ const NavigationBar = () => {
       </div>
       {/* navbar */}
       <div className="flex justify-center gap-10 ">
-        {
-            navItems.map(item=>(<Link key={item.id} to={item.link}>{item.text}</Link>))
-        }
+        {navItems.map((item) => (
+          <Link key={item.id} to={item.link}>
+            {item.text}
+          </Link>
+        ))}
       </div>
     </div>
   );
