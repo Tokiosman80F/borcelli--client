@@ -25,7 +25,7 @@ const ChefCard = () => {
              <div className="badge badge-outline">Specialty: {item.specialty}</div>
            </div>
          </div>
-         <div className="btn bg-orange-400 text-white hover:bg-orange-500"> <Link to={`/detail/${item.id}`} >view detail</Link> </div>
+         <Link to={`/detail/${item.id}`} className="w-full btn bg-orange-400 text-white hover:bg-orange-500 "> view detail</Link>
        </div>
         ))}
       </div>
