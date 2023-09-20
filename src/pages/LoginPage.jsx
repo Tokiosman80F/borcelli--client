@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Form, Link } from "react-router-dom";
+import  AuthContext  from "../provider/AuthProvider";
 
 
 const LoginPage = () => {
+    
     const handleLoginForm=()=>{}
     return (
         <div className="mt-10" >
