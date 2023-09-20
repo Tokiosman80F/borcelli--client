@@ -14,7 +14,7 @@ const LoginPage = () => {
             <button type="submit" className="btn bg-orange-400 hover:bg-orange-500 w-1/3 text-white">Login</button>
             <div className="text-black">Or Sign In with </div>
             <button type="submit" className="btn bg-blue-400 hover:bg-blue-500 w-1/3 text-white">Google</button>
-            <button type="submit" className="btn bg-purple-400 hover:bg-purple-500 w-1/3 text-white">GitHub</button>
+            <button type="submit" className="btn bg-indigo-400 hover:bg-indigo-500 w-1/3 text-white">GitHub</button>
             </Form>
         </div>
     );
