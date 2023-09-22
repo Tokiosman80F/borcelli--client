@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { useState } from "react";
 
 const RegisterPage = () => {
   const { createUser } = useContext(AuthContext);
+  const [confirmPass,setConfirmPass]=useState(false)
   console.log(createUser);
   const handleRegisterForm = (event) => {
     event.preventDefault();
@@ -13,6 +15,11 @@ const RegisterPage = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
     const photo = form.photo.value;
+    if(password!==confirm)
+    {
+        setConfirmPass(true)
+        return
+    }
     console.log(name, photo, password, confirm, email);
     createUser(email, password)
       .then((userCredential) => {
@@ -63,8 +70,11 @@ const RegisterPage = () => {
           required
           className="input input-bordered w-full max-w-xs"
         />
+        {
+            confirmPass && <div className="text-red-500 font-">Password doesnot match</div>
+        }
         <div>
-          {" "}
+        
           Already Have an Account ?
           <Link to="/login" className="text-blue-500 underline">
             Go to Login
@@ -75,19 +85,6 @@ const RegisterPage = () => {
           className="btn bg-orange-400 hover:bg-orange-500 w-1/3 text-white"
         >
           Register
-        </button>
-        <div className="text-black">Or Sign Up with </div>
-        <button
-          type="submit"
-          className="btn bg-blue-400 hover:bg-blue-500 w-1/3 text-white"
-        >
-          Google
-        </button>
-        <button
-          type="submit"
-          className="btn bg-purple-400 hover:bg-purple-500 w-1/3 text-white"
-        >
-          GitHub
         </button>
       </Form>
     </div>
