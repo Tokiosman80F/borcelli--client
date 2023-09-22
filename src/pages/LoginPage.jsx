@@ -1,9 +1,22 @@
 import { useContext } from "react";
 import { Form, Link } from "react-router-dom";
-import AuthContext from "../provider/AuthProvider";
+import { AuthContext } from "../provider/AuthProvider";
 
 const LoginPage = () => {
-  const handleLoginForm = () => {};
+  const { loginUser } = useContext(AuthContext);
+  const handleLoginForm = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Logged successful", user);
+      })
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div className="mt-10">
       <Form
@@ -20,7 +33,7 @@ const LoginPage = () => {
         />
         <input
           type="password"
-          name="passwprd"
+          name="password"
           placeholder="Password"
           required
           className="input input-bordered w-full max-w-xs"
