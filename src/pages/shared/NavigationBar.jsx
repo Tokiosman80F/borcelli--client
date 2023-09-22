@@ -9,7 +9,12 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const NavigationBar = () => {
+  const {user}=useContext(AuthContext)
+  console.log("User ==>",user);
+  console.log("User Email ==>",user.email);
   const navItems = [
     { id: 1, text: "Home", link: "/" },
     { id: 2, text: "Blogs", link: "/blogs" },
