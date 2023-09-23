@@ -7,6 +7,7 @@ import LoginLayout from "../layouts/LoginLayout/LoginLayout";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ErrorPage from "../pages/ErrorPage";
+import Blog from "../pages/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -17,8 +18,12 @@ export const router = createBrowserRouter([
       path:"/",
       element:<ChefCard></ChefCard>,
       loader:()=>fetch(`http://localhost:4000/chef`)
-    },
-    ]
+    }],
+   
+  },
+  {
+    path:"/blogs",
+    element:<Blog></Blog>
   },
   {
     path:"/",
