@@ -58,7 +58,8 @@ const NavigationBar = () => {
 
           {user ? (
             <Link to="/" className="flex items-center gap-2" onClick={handleLogOut}>
-              <span>{user?.email}</span>
+              {user?.email?<span>{user?.email} </span>:<img className="w-7 rounded-full" src={user?.photoURL} alt="" /> }
+             
               <FaUnlock className="text-orange-500"></FaUnlock>
               <span className="hover:text-black">LogOut</span>
             </Link>

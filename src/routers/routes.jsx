@@ -6,11 +6,13 @@ import ChefDetail from "../pages/ChefDetail";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[{
       path:"/",
       element:<ChefCard></ChefCard>,
@@ -21,6 +23,7 @@ export const router = createBrowserRouter([
   {
     path:"/",
     element:<LoginLayout></LoginLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[{
       path:"/",
       element:<Navigate to="/login"></Navigate>
@@ -37,6 +40,7 @@ export const router = createBrowserRouter([
   {
     path:"/",
     element:<ChefDetailLayout></ChefDetailLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[{
       path:'/detail/:id',
       element:<ChefDetail></ChefDetail>,
