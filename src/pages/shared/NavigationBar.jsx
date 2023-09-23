@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaLock,
   FaTwitter,
+  FaUnlock,
   FaYoutube,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -12,14 +13,19 @@ import logo from "../../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 const NavigationBar = () => {
-  const {user}=useContext(AuthContext)
-  console.log("User ==>",user);
-  console.log("User Email ==>",user.email);
+  const { user, logoutUser } = useContext(AuthContext);
+  console.log("User ==>", user);
+  console.log("User Email ==>", user?.email);
   const navItems = [
     { id: 1, text: "Home", link: "/" },
     { id: 2, text: "Blogs", link: "/blogs" },
     { id: 3, text: "About Us", link: "/about" },
   ];
+  const handleLogOut = () => {
+    logoutUser()
+      .then(() => console.log("Successfully Logged Out"))
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div className="text-gray-500">
       {/* icons */}
@@ -41,20 +47,27 @@ const NavigationBar = () => {
         </div>
         {/* right */}
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2">
+          {/* <button className="flex items-center gap-2">
             <FaFileArrowUp className="text-orange-500"></FaFileArrowUp>{" "}
             <span className="hover:text-black">Submit Recipe</span>
           </button>
           <button className="flex items-center gap-2">
             <FaHeart className="text-orange-500"></FaHeart>
             <span className="hover:text-black">Saved Recipe</span>
-          </button>
-        
+          </button> */}
+
+          {user ? (
+            <Link to="/" className="flex items-center gap-2" onClick={handleLogOut}>
+              <span>{user?.email}</span>
+              <FaUnlock className="text-orange-500"></FaUnlock>
+              <span className="hover:text-black">LogOut</span>
+            </Link>
+          ) : (
             <Link to="/login" className="flex items-center gap-2">
               <FaLock className="text-orange-500"></FaLock>
               <span className="hover:text-black">Login</span>
             </Link>
-          
+          )}
         </div>
       </div>
       {/* brands */}
