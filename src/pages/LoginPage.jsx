@@ -3,7 +3,8 @@ import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const LoginPage = () => {
-  const { loginUser, googleLoginUser } = useContext(AuthContext);
+  const { loginUser, googleLoginUser, githubLoginUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handleLoginForm = (event) => {
     event.preventDefault();
@@ -21,7 +22,14 @@ const LoginPage = () => {
   };
   const handleGoogleBtn = () => {
     googleLoginUser()
-      .then((result) => console.log("Google sign in successful =>", result.user))
+      .then((result) =>
+        console.log("Google sign in successful =>", result.user)
+      )
+      .catch((error) => console.log(error.message));
+  };
+  const handleGithubBtn = () => {
+    githubLoginUser()
+      .then((result) => console.log("github signer loggin =>", result.user))
       .catch((error)=>console.log(error.message));
   };
   return (
@@ -68,6 +76,7 @@ const LoginPage = () => {
         <button
           type="submit"
           className="btn bg-indigo-400 hover:bg-indigo-500 w-1/3 text-white"
+          onClick={handleGithubBtn}
         >
           GitHub
         </button>
