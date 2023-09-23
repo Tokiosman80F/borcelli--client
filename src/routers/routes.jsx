@@ -15,49 +15,58 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[{
-      path:"/",
-      element:<ChefCard></ChefCard>,
-      loader:()=>fetch(`http://localhost:4000/chef`)
-    }],
-   
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <ChefCard></ChefCard>,
+        loader: () => fetch(`http://localhost:4000/chef`),
+      },
+    ],
   },
   {
-    path:"/",
-    element:<LoginLayout></LoginLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[{
-      path:"/",
-      element:<Navigate to="/login"></Navigate>
-    },
-    { 
-      path:"/login",
-      element:<LoginPage></LoginPage>
-    },
-    {
-      path:"/register",
-      element:<RegisterPage></RegisterPage>
-    }]
+    path: "/",
+    element: <LoginLayout></LoginLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Navigate to="/login"></Navigate>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage></RegisterPage>,
+      },
+    ],
   },
   {
-    path:"/",
-    element:<ChefDetailLayout></ChefDetailLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[{
-      path:'/detail/:id',
-      element:<PrivateRoute><ChefDetail></ChefDetail></PrivateRoute>,
-      loader:({params})=>fetch(`http://localhost:4000/recipe/${params.id}`)
-    }]
+    path: "/",
+    element: <ChefDetailLayout></ChefDetailLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/detail/:id",
+        element: (
+          <PrivateRoute>
+            <ChefDetail></ChefDetail>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/recipe/${params.id}`),
+      },
+    ],
   },
   {
-    path:"/blogs",
-    element:<Blog></Blog>
+    path: "/blogs",
+    element: <Blog></Blog>,
   },
 
   {
-    path:"/about",
-    element:<AboutPage></AboutPage>
+    path: "/about",
+    element: <AboutPage></AboutPage>,
   },
-
 ]);

@@ -1,13 +1,22 @@
+import { useState } from "react";
+import { FaBolt, FaHeart } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
 
 const ChefDetail = () => {
   const data = useLoaderData();
   const { description, image_url, name, specialty, recipes } = data;
-  console.log(description, name, specialty, recipes);
+
+  const [liked, setLiked] = useState(false);
+
+  /*------------Functions-----------------*/
+  const handleLiked = () => {
+    setLiked(true);
+  };
+  // console.log(description, name, specialty, recipes);
   return (
     <div className="px-52 py-5">
       <h2 className="text-center font-bold text-4xl uppercase text-orange-400 py-10 ">
-        Chefs Review{" "}
+        Chefs Review
       </h2>
       <div className="card  lg:card-side bg-base-100 shadow-xl">
         <figure className="w-1/2">
@@ -16,7 +25,12 @@ const ChefDetail = () => {
         <div className="card-body w-1/2 ">
           <h2 className="text-3xl font-bold ">{name} </h2>
           <p className="text-xl">{description}</p>
-
+          <p className="text-xl flex items-center gap-1">
+            <FaBolt className="bg-green-500"></FaBolt> Speciality:
+            <span className="text-red-500 font-bold underline">
+              {specialty}
+            </span>
+          </p>
           <div className="card-actions justify-end">
             <button className="btn btn-outline bg-orange-500">
               <p className="text-white">Recommended by:</p>
@@ -29,7 +43,7 @@ const ChefDetail = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Best Recipe */}
 
       <h2 className="text-center font-bold text-4xl uppercase text-orange-400 py-10 mt-10">
@@ -37,8 +51,11 @@ const ChefDetail = () => {
       </h2>
       <div className="grid grid-cols-2 gap-10 justify-between items-end">
         {recipes.map((recipe, index) => (
-          <div key={index} className="card w-96 bg-base-100 shadow-xl border-2 bottom-1 ">
-            <figure >
+          <div
+            key={index}
+            className="card w-96 bg-base-100 shadow-xl border-2 bottom-1 "
+          >
+            <figure>
               <img src={recipe.image_url} alt="Shoes" />
             </figure>
             <div className="card-body">
@@ -50,9 +67,12 @@ const ChefDetail = () => {
                   <p key={index}>{`${index + 1}. ${ingredient}`}</p>
                 ))}
               </div>
-              <div className="card-actions justify-end">
+              <div className="card-actions justify-between">
                 <button className="btn bg-orange-400 text-white hover:bg-orange-500">
                   Rating {recipe.rating}
+                </button>
+                <button onClick={handleLiked}  className="btn btn-outline bg-white text-red-500 hover:bg-red-500">
+                  <FaHeart></FaHeart>
                 </button>
               </div>
             </div>

@@ -1,5 +1,11 @@
 import { useContext } from "react";
-import { Form, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import {
+  Form,
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -8,8 +14,11 @@ const LoginPage = () => {
     useContext(AuthContext);
 
   let navigate = useNavigate();
-  let location=useLocation();
-  let from=location.state?.from?.pathname || "/"
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+
+  
   /* ----------Functions-------------------*/
   const handleLoginForm = (event) => {
     event.preventDefault();
@@ -22,35 +31,36 @@ const LoginPage = () => {
         toast.success("Successfully Login");
         const user = userCredential.user;
         console.log("Logged successful", user);
-        navigate(from,{replace:true});
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
         toast.error("Failed to login");
       });
   };
+
   const handleGoogleBtn = () => {
     googleLoginUser()
-      .then(
-        (result) => console.log("Google sign in successful =>", result.user),
-      
+      .then((result) =>
+        console.log("Google sign in successful =>", result.user)
       )
       .catch((error) => {
         console.log(error.message);
         toast.error("Failed to login");
       });
   };
+
   const handleGithubBtn = () => {
     githubLoginUser()
       .then((result) => {
         console.log("github signer loggin =>", result.user);
-      
       })
       .catch((error) => {
         console.log(error.message);
         toast.error("Failed to login");
       });
   };
+
   return (
     <div className="mt-10">
       <Form
