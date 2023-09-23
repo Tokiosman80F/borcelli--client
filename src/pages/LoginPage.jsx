@@ -3,8 +3,8 @@ import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const LoginPage = () => {
-  const { loginUser } = useContext(AuthContext);
-  const navigate=useNavigate()
+  const { loginUser, googleLoginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLoginForm = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,9 +15,14 @@ const LoginPage = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Logged successful", user);
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => console.log(error.message));
+  };
+  const handleGoogleBtn = () => {
+    googleLoginUser()
+      .then((result) => console.log("Google sign in successful =>", result.user))
+      .catch((error)=>console.log(error.message));
   };
   return (
     <div className="mt-10">
@@ -56,6 +61,7 @@ const LoginPage = () => {
         <button
           type="submit"
           className="btn bg-blue-400 hover:bg-blue-500 w-1/3 text-white"
+          onClick={handleGoogleBtn}
         >
           Google
         </button>
