@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const { loginUser, googleLoginUser, githubLoginUser } =
@@ -14,23 +15,37 @@ const LoginPage = () => {
     console.log(email, password);
     loginUser(email, password)
       .then((userCredential) => {
+        toast.success("Successfully Login");
         const user = userCredential.user;
         console.log("Logged successful", user);
         navigate("/");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("Failed to login");
+      });
   };
   const handleGoogleBtn = () => {
     googleLoginUser()
-      .then((result) =>
-        console.log("Google sign in successful =>", result.user)
+      .then(
+        (result) => console.log("Google sign in successful =>", result.user),
+      
       )
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("Failed to login");
+      });
   };
   const handleGithubBtn = () => {
     githubLoginUser()
-      .then((result) => console.log("github signer loggin =>", result.user))
-      .catch((error)=>console.log(error.message));
+      .then((result) => {
+        console.log("github signer loggin =>", result.user);
+      
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("Failed to login");
+      });
   };
   return (
     <div className="mt-10">
@@ -66,6 +81,8 @@ const LoginPage = () => {
           Login
         </button>
         <div className="text-black">Or Sign In with </div>
+      </Form>
+      <div className="mx-auto w-1/3 border-2 flex gap-5 justify-center items-center  py-5">
         <button
           type="submit"
           className="btn bg-blue-400 hover:bg-blue-500 w-1/3 text-white"
@@ -73,6 +90,7 @@ const LoginPage = () => {
         >
           Google
         </button>
+        <p>or</p>
         <button
           type="submit"
           className="btn bg-indigo-400 hover:bg-indigo-500 w-1/3 text-white"
@@ -80,7 +98,7 @@ const LoginPage = () => {
         >
           GitHub
         </button>
-      </Form>
+      </div>
     </div>
   );
 };

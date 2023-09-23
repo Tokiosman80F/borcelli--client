@@ -8,6 +8,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ErrorPage from "../pages/ErrorPage";
 import Blog from "../pages/Blog";
+import AboutPage from "../pages/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
   {
     path:"/blogs",
     element:<Blog></Blog>
+  },
+  {
+    path:"/about",
+    element:<AboutPage></AboutPage>
   },
   {
     path:"/",

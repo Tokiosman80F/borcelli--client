@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const { createUser } = useContext(AuthContext);
-  const [confirmPass,setConfirmPass]=useState(false)
+  const [confirmPass, setConfirmPass] = useState(false);
   console.log(createUser);
   const handleRegisterForm = (event) => {
     event.preventDefault();
@@ -15,18 +16,21 @@ const RegisterPage = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
     const photo = form.photo.value;
-    if(password!==confirm)
-    {
-        setConfirmPass(true)
-        return
+    if (password !== confirm) {
+      setConfirmPass(true);
+      return;
     }
     console.log(name, photo, password, confirm, email);
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User successfully created an Account",user);
+        console.log("User successfully created an Account", user);
+        toast.success("Successfully Register");
       })
-      .catch((error)=>console.log(error.message));
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("Failed to Register")
+      });
   };
   return (
     <div className="mt-10">
@@ -70,11 +74,10 @@ const RegisterPage = () => {
           required
           className="input input-bordered w-full max-w-xs"
         />
-        {
-            confirmPass && <div className="text-red-500 font-">Password doesnot match</div>
-        }
+        {confirmPass && (
+          <div className="text-red-500 font-">Password doesnot match</div>
+        )}
         <div>
-        
           Already Have an Account ?
           <Link to="/login" className="text-blue-500 underline">
             Go to Login
