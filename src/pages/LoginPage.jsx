@@ -1,12 +1,16 @@
 import { useContext } from "react";
-import { Form, Link, Navigate, useNavigate } from "react-router-dom";
+import { Form, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const { loginUser, googleLoginUser, githubLoginUser } =
     useContext(AuthContext);
-  const navigate = useNavigate();
+
+  let navigate = useNavigate();
+  let location=useLocation();
+  let from=location.state?.from?.pathname || "/"
+  /* ----------Functions-------------------*/
   const handleLoginForm = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,7 +22,7 @@ const LoginPage = () => {
         toast.success("Successfully Login");
         const user = userCredential.user;
         console.log("Logged successful", user);
-        navigate("/");
+        navigate(from,{replace:true});
       })
       .catch((error) => {
         console.log(error.message);

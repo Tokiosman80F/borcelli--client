@@ -9,6 +9,7 @@ import RegisterPage from "../pages/RegisterPage";
 import ErrorPage from "../pages/ErrorPage";
 import Blog from "../pages/Blog";
 import AboutPage from "../pages/AboutPage";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,14 +22,6 @@ export const router = createBrowserRouter([
       loader:()=>fetch(`http://localhost:4000/chef`)
     }],
    
-  },
-  {
-    path:"/blogs",
-    element:<Blog></Blog>
-  },
-  {
-    path:"/about",
-    element:<AboutPage></AboutPage>
   },
   {
     path:"/",
@@ -53,8 +46,18 @@ export const router = createBrowserRouter([
     errorElement:<ErrorPage></ErrorPage>,
     children:[{
       path:'/detail/:id',
-      element:<ChefDetail></ChefDetail>,
+      element:<PrivateRoute><ChefDetail></ChefDetail></PrivateRoute>,
       loader:({params})=>fetch(`http://localhost:4000/recipe/${params.id}`)
     }]
-  }
+  },
+  {
+    path:"/blogs",
+    element:<Blog></Blog>
+  },
+
+  {
+    path:"/about",
+    element:<AboutPage></AboutPage>
+  },
+
 ]);
