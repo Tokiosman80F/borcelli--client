@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -7,7 +7,11 @@ import { toast } from "react-toastify";
 const RegisterPage = () => {
   const { createUser } = useContext(AuthContext);
   const [confirmPass, setConfirmPass] = useState(false);
-  console.log(createUser);
+
+  const navigate=useNavigate()
+
+  // const [inputValue,setInputValue]=useState("")
+  // console.log(createUser)
   const handleRegisterForm = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -26,11 +30,13 @@ const RegisterPage = () => {
         const user = userCredential.user;
         console.log("User successfully created an Account", user);
         toast.success("Successfully Register");
+        navigate('/')
       })
       .catch((error) => {
         console.log(error.message);
-        toast.error("Failed to Register")
+        toast.error(error.message)
       });
+      
   };
   return (
     <div className="mt-10">
@@ -44,6 +50,7 @@ const RegisterPage = () => {
           name="name"
           placeholder="Your Name"
           required
+          
           className="input input-bordered w-full max-w-xs"
         />
         <input
@@ -51,6 +58,7 @@ const RegisterPage = () => {
           name="email"
           placeholder="Your Email"
           required
+          
           className="input input-bordered w-full max-w-xs"
         />
         <input
@@ -58,6 +66,7 @@ const RegisterPage = () => {
           name="photo"
           placeholder="Photo Url"
           required
+          
           className="input input-bordered w-full max-w-xs"
         />
         <input
@@ -65,6 +74,7 @@ const RegisterPage = () => {
           name="password"
           placeholder="Password"
           required
+          
           className="input input-bordered w-full max-w-xs"
         />
         <input
@@ -72,6 +82,7 @@ const RegisterPage = () => {
           name="confirm"
           placeholder="Confirm Password"
           required
+          
           className="input input-bordered w-full max-w-xs"
         />
         {confirmPass && (

@@ -8,7 +8,7 @@ import {
   FaUnlock,
   FaYoutube,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -57,9 +57,17 @@ const NavigationBar = () => {
           </button> */}
 
           {user ? (
-            <Link to="/" className="flex items-center gap-2" onClick={handleLogOut}>
-              {user?.email?<span>{user?.email} </span>:<img className="w-7 rounded-full" src={user?.photoURL} alt="" /> }
-             
+            <Link
+              to="/"
+              className="flex items-center gap-2"
+              onClick={handleLogOut}
+            >
+              {user?.email ? (
+                <span>{user?.email} </span>
+              ) : (
+                <img className="w-7 rounded-full" src={user?.photoURL} alt="" />
+              )}
+
               <FaUnlock className="text-orange-500"></FaUnlock>
               <span className="hover:text-black">LogOut</span>
             </Link>
@@ -79,9 +87,15 @@ const NavigationBar = () => {
       {/* navbar */}
       <div className="flex justify-center gap-10 ">
         {navItems.map((item) => (
-          <Link key={item.id} to={item.link}>
+          <NavLink
+            key={item.id}
+            to={item.link}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
             {item.text}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>
