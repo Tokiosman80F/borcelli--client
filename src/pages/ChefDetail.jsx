@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { FaBolt, FaHeart } from "react-icons/fa6";
+import { FaBolt, FaHeart, FaHeartCircleCheck } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ChefDetail = () => {
   const data = useLoaderData();
@@ -10,6 +11,7 @@ const ChefDetail = () => {
 
   /*------------Functions-----------------*/
   const handleLiked = () => {
+    toast.success("Thank you for liking")
     setLiked(true);
   };
   // console.log(description, name, specialty, recipes);
@@ -72,7 +74,7 @@ const ChefDetail = () => {
                   Rating {recipe.rating}
                 </button>
                 <button onClick={handleLiked}  className="btn btn-outline bg-white text-red-500 hover:bg-red-500">
-                  <FaHeart></FaHeart>
+                <FaHeart></FaHeart>
                 </button>
               </div>
             </div>
