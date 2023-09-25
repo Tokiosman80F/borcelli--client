@@ -8,7 +8,7 @@ const MainLayout = () => {
         <>
          <NavigationBar></NavigationBar>
          <Carousel></Carousel>
-         <RecipeCategory></RecipeCategory>
+         <RecipeCategory></RecipeCategory> 
          <Outlet></Outlet>  
          <Footer></Footer> 
         </>

@@ -29,7 +29,7 @@ const NavigationBar = () => {
   return (
     <div className="text-gray-500">
       {/* icons */}
-      <div className="bg-neutral-200 flex justify-between px-52 py-2 text-gray-400">
+      <div className="bg-neutral-200 flex justify-between md:px-52 py-2 text-gray-400">
         {/* left */}
         <div className="flex items-center gap-3 ">
           <Link>

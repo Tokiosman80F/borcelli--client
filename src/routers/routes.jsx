@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <ChefCard></ChefCard>,
-        loader: () => fetch(`http://localhost:4000/chef`),
+        loader: () => fetch(`https://borcelli-sever-i6e2839ow-tokiosman0135-gmailcom.vercel.app/chef`),
       },
     ],
   },
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/recipe/${params.id}`),
+          fetch(`https://borcelli-sever-i6e2839ow-tokiosman0135-gmailcom.vercel.app/recipe/${params.id}`),
       },
     ],
   },

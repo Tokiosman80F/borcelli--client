@@ -4,15 +4,15 @@ const ChefCard = () => {
   const data = useLoaderData();
   console.log(data.length);
   return (
-    <div className="px-52">
+    <div className="mt-10 md:px-52">
       {/* header */}
-      <div className="text-center pb-24">
+      <div className="text-center pb-12 md:pb-24">
         <p className="text-orange-500">Know Our Chef</p>
-        <h1 className="text-5xl font-bold">Master Chef</h1>
+        <h1 className="text-3xl md:text-5xl font-bold">Master Chef</h1>
       </div>
-      <div className="grid grid-cols-3 gap-10 ">
+      <div className="grid md:grid-cols-3 gap-10 ">
         {data.map((item) => (
-         <div key={item.id} className="card w-96 bg-base-100 shadow-xl border-2">
+         <div key={item.id} className="card md:w-96 bg-base-100 shadow-xl border-2">
          <figure><img src={item.image_url} className="object-contain w-fu" /></figure>
          <div className="card-body">
            <h2 className="card-title">
