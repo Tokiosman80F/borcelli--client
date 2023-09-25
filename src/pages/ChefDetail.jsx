@@ -16,15 +16,15 @@ const ChefDetail = () => {
   };
   // console.log(description, name, specialty, recipes);
   return (
-    <div className="px-52 py-5">
+    <div className="md:px-52 py-5">
       <h2 className="text-center font-bold text-4xl uppercase text-orange-400 py-10 ">
         Chefs Review
       </h2>
       <div className="card  lg:card-side bg-base-100 shadow-xl">
-        <figure className="w-1/2">
+        <figure className="md:w-1/2">
           <img src={image_url} alt="Album" className="object-cover h-96" />
         </figure>
-        <div className="card-body w-1/2 ">
+        <div className="card-body md:w-1/2 ">
           <h2 className="text-3xl font-bold ">{name} </h2>
           <p className="text-xl">{description}</p>
           <p className="text-xl flex items-center gap-1">
@@ -51,11 +51,11 @@ const ChefDetail = () => {
       <h2 className="text-center font-bold text-4xl uppercase text-orange-400 py-10 mt-10">
         Best Recipes
       </h2>
-      <div className="grid grid-cols-2 gap-10 justify-between items-end">
+      <div className="grid  md:grid-cols-2 gap-10 justify-between items-end">
         {recipes.map((recipe, index) => (
           <div
             key={index}
-            className="card w-96 bg-base-100 shadow-xl border-2 bottom-1 "
+            className="card md:w-96 bg-base-100 shadow-xl border-2 bottom-1 "
           >
             <figure>
               <img src={recipe.image_url} alt="Shoes" />

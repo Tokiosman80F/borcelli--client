@@ -65,7 +65,7 @@ const LoginPage = () => {
     <div className="mt-10">
       <Form
         onSubmit={handleLoginForm}
-        className="mx-auto w-1/3 border-2 flex flex-col justify-center items-center gap-6 py-5"
+        className="mx-auto md:w-1/3 border-2 flex flex-col justify-center items-center gap-6 py-5"
       >
         <h2 className="text-center text-4xl font-bold py-2">Login Form</h2>
         <input
@@ -96,10 +96,10 @@ const LoginPage = () => {
         </button>
         <div className="text-black">Or Sign In with </div>
       </Form>
-      <div className="mx-auto w-1/3 border-2 flex gap-5 justify-center items-center  py-5">
+      <div className="mx-auto md:w-1/3 border-2 flex flex-col md:flex  gap-5 justify-center items-center  py-5">
         <button
           type="submit"
-          className="btn bg-blue-400 hover:bg-blue-500 w-1/3 text-white"
+          className="btn bg-blue-400 hover:bg-blue-500 md:w-1/3 text-white"
           onClick={handleGoogleBtn}
         >
           Google
@@ -107,7 +107,7 @@ const LoginPage = () => {
         <p>or</p>
         <button
           type="submit"
-          className="btn bg-indigo-400 hover:bg-indigo-500 w-1/3 text-white"
+          className="btn bg-indigo-400 hover:bg-indigo-500 md:w-1/3 text-white"
           onClick={handleGithubBtn}
         >
           GitHub

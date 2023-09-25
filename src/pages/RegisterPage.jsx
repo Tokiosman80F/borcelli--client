@@ -42,7 +42,7 @@ const RegisterPage = () => {
     <div className="mt-10">
       <Form
         onSubmit={handleRegisterForm}
-        className="mx-auto w-1/3 border-2 flex flex-col justify-center items-center gap-6 py-5"
+        className="mx-auto md:w-1/3 border-2 flex flex-col justify-center items-center gap-6 py-5"
       >
         <h2 className="text-center text-4xl font-bold py-2">Register Form</h2>
         <input
