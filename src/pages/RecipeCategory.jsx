@@ -15,7 +15,7 @@ const RecipeCategory = () => {
     <div className="text-center md:px-52 md:py-32">
        <h5 className="text-orange-500">Choose Your Category</h5>
        <h1 className="text-3xl md:text-5xl font-bold">Recipe Categories</h1>
-       <div className="flex flex-col md:flex justify-between items-center gap-10 mt-8 md:mt-16">
+       <div className="flex flex-col md:flex-row justify-between items-center gap-10 mt-8 md:mt-16">
         {
             foods.map(item=><div key={item.id} className="">
                 <img src={item.image} alt="" className="hover:ease-in duration-100 hover:rotate-12 w-40 h-40 rounded-full" />
