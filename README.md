@@ -1,5 +1,5 @@
 # Borelli Restaurant Project Documentation
-
+- **Live Demo:** [Borelli Restaurant Live Demo](https://borcelli-8b62f.web.app/)
 ## Project Overview
 
 - **Project Name:** Borelli Restaurant
@@ -77,9 +77,8 @@ Borelli Restaurant is a web application that presents American master chefs and 
 
 - **Live Demo:** [Borelli Restaurant Live Demo](https://borcelli-8b62f.web.app/)
 
-- **API (Vercel):** [Insert API Deployment Link](insert_api_deployment_link_here)
-
-- **Client (Firebase):** [Insert Client Deployment Link](insert_client_deployment_link_here)
+- **API (Vercel):** [Insert API Deployment Link](https://borcelli-sever-i6e2839ow-tokiosman0135-gmailcom.vercel.app/chef)
+- **API (Vercel):** [Insert API Deployment Link](https://borcelli-sever-i6e2839ow-tokiosman0135-gmailcom.vercel.app/recipe)
 
 ## Conclusion <a name="conclusion"></a>
 
